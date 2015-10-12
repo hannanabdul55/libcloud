@@ -335,6 +335,20 @@ class OpenStackNodeDriver(NodeDriver, OpenStackDriverMixin):
         """
         return self._reboot_node(node, reboot_type='HARD')
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    def ex_list_subnet(self, network_id=None):
+        """
+        List all subnet resources
+        :param        network_id:   filter for subnets for this network ID
+        :type         network_id:   ``str``
+        :rtype:       ``list`` of :class:``OpenStackSubnet``
+        """
+        uri = '/subnets'
+        resp = self.connection.request(uri, method='GET')
+=======
+>>>>>>> Stashed changes
     def ex_list_subnet(self,network_id=None):
         """
             List all subnet resources 
@@ -345,10 +359,25 @@ class OpenStackNodeDriver(NodeDriver, OpenStackDriverMixin):
         """
         uri = '/subnets'
         response = self.connection.request(uri, method='GET')
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/LIBCLOUD-604_ex_list_subnets
+>>>>>>> Stashed changes
         if resp.status == httplib.NOT_FOUND:
             return None
         return self._to_subnets(resp.object)
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+class OpenStackSubnet(object):
+    """
+    Represents information about an OpenStack subnet
+    NOTE: This class is openStack specific
+    """
+=======
+>>>>>>> Stashed changes
 class OpenStackSubnet(object):
     """
         Represents information about an OpenStack subnet
@@ -356,6 +385,10 @@ class OpenStackSubnet(object):
         NOTE: This class is openStack specific
     """
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/LIBCLOUD-604_ex_list_subnets
+>>>>>>> Stashed changes
     def __init__(self, id, name, cidr, alloc_pools):
         self.id = id
         self.name = name
@@ -364,6 +397,13 @@ class OpenStackSubnet(object):
 
     def __repr__(self):
         return (('<OpenStackSubnet: id=%s, name=%s') % (self.id, self.name))
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/LIBCLOUD-604_ex_list_subnets
+>>>>>>> Stashed changes
 
 class OpenStackNodeSize(NodeSize):
     """
@@ -995,6 +1035,17 @@ class OpenStack_1_0_NodeDriver(OpenStackNodeDriver):
     def _to_subnets(self, obj):
         subnets = obj['subnets']
         return [self._to_subnet(subnet) for subnet in subnets]
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+    def _to_subnet(self, obj):
+        return OpenStackSubnet(id=obj['id'],
+                               name=obj['name'],
+                               cidr=obj.get('cidr', False),
+                               alloc_pools=obj.get('allocation_pools'))
+=======
+>>>>>>> Stashed changes
     
     def _to_subnet(self, obj):
         return OpenStackSubnet(id = obj['id'],
@@ -1002,6 +1053,10 @@ class OpenStack_1_0_NodeDriver(OpenStackNodeDriver):
                                cidr = obj.get('cidr',False),
                                alloc_pools = obj.get('allocation_pools'))
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/LIBCLOUD-604_ex_list_subnets
+>>>>>>> Stashed changes
 
     def _get_size_price(self, size_id):
         try:
@@ -1606,10 +1661,23 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         return [self._to_subnet(subnet) for subnet in subnets]
 
     def _to_subnet(self, obj):
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        return OpenStackSubnet(id=obj['id'],
+                               name=obj['name'],
+                               cidr=obj.get('cidr', False),
+                               alloc_pools=obj.get('allocation_pools'))
+=======
+>>>>>>> Stashed changes
         return OpenStackSubnet(id = obj['id'],
                                name = obj['name'],
                                cidr = obj.get('cidr',False),
                                alloc_pools = obj.get('allocation_pools'))
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/LIBCLOUD-604_ex_list_subnets
+>>>>>>> Stashed changes
 
     def _to_networks(self, obj):
         networks = obj['networks']
